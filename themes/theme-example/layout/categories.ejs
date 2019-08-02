@@ -1,0 +1,30 @@
+<article class="container py-5">
+    <div class="row" style="margin-bottom: 60px" style="position: relative;">
+        <div class="col-md-9 category-body">
+            <div data-spy="scroll" data-target="#categories-list" data-offset="0">
+                <% site.categories.each(function (category) { %>
+                    <h3 class="category-name" id="<%- category.name %>"><%- category.name %></h3>
+                    <ul class="category-group">
+                        <% category.posts.each(function (post) { %>
+                        <li class="category-group-item">
+                            <span><%= date(post.date, "YYYY-MM-DD") %></span>
+                            <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+                        </li>
+                        <% })%>
+                    </ul>
+                <% }) %>
+            </div>
+        </div>
+        <div class="col-md-3 d-none d-xl-block">
+            <div id="categories-list" class="list-group">
+                <% site.categories.each(function (category) { %>
+                    <a class="list-group-item list-group-item-action" href="#<%- category.name %>"><%- category.name %>
+                        <span class="badge badge-action badge-pill"><%- category.posts.length %></span>
+                    </a>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</article>
+<%- partial('_partial/footer') %>
+<%- js('js/categories.js') %>

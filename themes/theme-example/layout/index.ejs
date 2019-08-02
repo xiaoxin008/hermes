@@ -1,0 +1,22 @@
+<div class="container body-content-wapper py-5">
+    <% page.posts.each(function (post) { %>
+        <a href="<%= url_for(post.path) %>">
+            <div class="card">
+                <div class="card-body" title="<%=post.title%>">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5 class="index-card-title card-title"><%=post.title%></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><%=full_date(post.date, 'dddd, MMMM Do YYYY')%></h6>
+                        </div>
+                        <div class="col-md-2">
+                            <img class="cardImg"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    <% }) %>
+    <%- partial('_partial/paginator.ejs') %>
+</div>
+<%- partial('_partial/footer') %>
+<%- js('js/index.js') %>

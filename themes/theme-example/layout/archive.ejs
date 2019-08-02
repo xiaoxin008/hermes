@@ -1,0 +1,12 @@
+<div class="container body-content-wapper py-5">
+    <ul class="list-group list-group-flush">
+    <% page.posts.each(function (post) { %>
+        <li class="list-group-item">
+            <span class="post-date"><%= date(post.date, "YYYY-MM-DD") %></span>
+            <a class="post-title" href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </li>
+    <% }) %>
+    </ul>
+    <%- partial('_partial/paginator.ejs') %>
+</div>
+<%- partial('_partial/footer') %>

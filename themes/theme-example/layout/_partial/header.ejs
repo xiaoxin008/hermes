@@ -1,0 +1,32 @@
+<header class="navbar-dark bg-dark ">
+    <div class="header container">
+        <nav class="navbar navbar-expand-lg row">
+            <a class="navbar-brand col-md-5" href="#"><%= config.title %></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse col-md-7" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <% for (submenu in theme.menu) { %>
+                    <% if(theme.menu[submenu] == path) { %><li class="nav-item active">  <% } else { %> <li class="nav-item"> <% } %>
+                        <a class="nav-link" href="<%- url_for(theme.menu[submenu]) %>"><%- __('Menu.' + submenu) %></a>
+                    </li>
+                <% } %>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container bg-dark text-white">
+        <div class="row header-content-wapper">
+            <div class="col-md-8 header-content-wapper">
+                <h1 class="display-9"><% if(is_home()) { %>Welcome To Hermes!<% } else if(is_archive()){%>archives<%}else{ %><%= page.title %><%}%></h1>
+                <p class="lead"><% if(is_home()) { %>Let's Have Fun.<% } else if(is_archive()){%><%=full_date(new Date(), 'dddd, MMMM Do')%><%}else{ %><%=full_date(new Date(), 'dddd, MMMM Do')%><% } %></p>
+            </div>
+            <div class="col-md-3">
+                <img src="<%= url_for("/css/img/index.gif") %>" style="height: 100%;width: 100%"/>
+            </div>
+        </div>
+    </div>
+</div>
